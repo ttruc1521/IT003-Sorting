@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build generate_data",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-O2", "-std=c++17", "-Iinclude",
+                "src/generate_data.cpp", "src/data_gen.cpp", "src/data_io.cpp",
+                "-o", "generate_data.exe"
+            ],
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build benchmark",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-O2", "-std=c++17", "-Iinclude",
+                "src/benchmark.cpp", "src/data_io.cpp",
+                "-o", "benchmark.exe"
+            ],
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "build all",
+            "dependsOn": ["build generate_data", "build benchmark"],
+            "group": { "kind": "build", "isDefault": true }
+        }
+    ]
+}
